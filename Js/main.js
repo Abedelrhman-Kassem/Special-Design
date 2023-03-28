@@ -7,8 +7,24 @@ let imgsArray = [];
 
 // Open and Close Settings
 document.querySelector(".setting .icon").addEventListener("click", function () {
-  document.querySelector(".setting").classList.toggle("opened");
-  document.querySelector(".gear").classList.toggle("opened");
+  let settings = document.querySelector(".setting");
+  settings.classList.toggle("opened");
+  let gearIcon = document.querySelector(".gear");
+  gearIcon.classList.toggle("opened");
+
+  if (settings.classList.contains("opened")) {
+    overlay = document.createElement("div");
+    overlay.classList.add("popup-overlay");
+    document.body.appendChild(overlay);
+
+    overlay.onclick = function () {
+      this.remove();
+      settings.classList.remove("opened");
+      gearIcon.classList.remove("opened");
+    };
+  } else {
+    overlay.remove();
+  }
 });
 
 // If MainColor is Chossen in LocalStorage
