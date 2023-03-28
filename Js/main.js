@@ -1,4 +1,5 @@
 let landing = document.querySelector(".landing");
+let sections = document.querySelectorAll("section");
 let list = document.querySelectorAll(".colors-list li");
 let backgroundSpans = document.querySelectorAll(".random-background span");
 let backgroundShuffle;
@@ -39,6 +40,55 @@ list.forEach((li) => {
       li.dataset.color
     );
     localStorage.mainColor = li.dataset.color;
+  });
+});
+
+// Create Bullets
+sections = Array.from(sections);
+sections.shift();
+
+let bulletsDiv = document.querySelector(".bullets");
+let links = document.querySelectorAll(".header li a");
+let fragment = document.createDocumentFragment();
+
+sections.forEach((section, index) => {
+  let bullet = document.createElement("div");
+  bullet.classList.add("bullet");
+  bullet.dataset.section = `.${section.classList.item(0)}`;
+  links[index].dataset.section = `.${section.classList.item(0)}`;
+
+  let toolTip = document.createElement("div");
+  toolTip.classList.add("tooltip");
+  let toolTipText = document.createTextNode(section.classList.item(0));
+  toolTip.appendChild(toolTipText);
+
+  bullet.appendChild(toolTip);
+  fragment.appendChild(bullet);
+});
+bulletsDiv.appendChild(fragment);
+
+let bullets = document.querySelectorAll(".bullets .bullet");
+linkScroll(bullets);
+linkScroll(links);
+
+function linkScroll(elements) {
+  elements.forEach((ele) => {
+    ele.addEventListener("click", (e) => {
+      e.preventDefault();
+      document
+        .querySelector(ele.dataset.section)
+        .scrollIntoView({ behavior: "smooth" });
+    });
+  });
+}
+// Set Active Class On Bullets While Scrolling
+window.addEventListener("scroll", () => {
+  sections.forEach((section, index) => {
+    let sectionRect = section.getBoundingClientRect();
+    bullets[index].classList.toggle(
+      "active",
+      sectionRect.top < 300 && sectionRect.bottom > 300
+    );
   });
 });
 
@@ -94,7 +144,7 @@ let skillSection = document.querySelector("section.skills");
 let skillSpans = document.querySelectorAll("[data-progress]");
 window.addEventListener("scroll", () => {
   let skillRect = skillSection.getBoundingClientRect();
-  if (skillRect.top <= 0 && skillRect.bottom > 200) {
+  if (skillRect.top <= 10 && skillRect.bottom > 200) {
     skillSpans.forEach((skill) => {
       skill.style.width = skill.dataset.progress;
     });
