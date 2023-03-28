@@ -8,8 +8,8 @@ let imgsArray = [];
 // Open and Close Settings
 document.querySelector(".setting .icon").addEventListener("click", function () {
   let settings = document.querySelector(".setting");
-  settings.classList.toggle("opened");
   let gearIcon = document.querySelector(".gear");
+  settings.classList.toggle("opened");
   gearIcon.classList.toggle("opened");
 
   if (settings.classList.contains("opened")) {
@@ -22,9 +22,7 @@ document.querySelector(".setting .icon").addEventListener("click", function () {
       settings.classList.remove("opened");
       gearIcon.classList.remove("opened");
     };
-  } else {
-    overlay.remove();
-  }
+  } else overlay.remove();
 });
 
 // If MainColor is Chossen in LocalStorage
@@ -107,6 +105,35 @@ window.addEventListener("scroll", () => {
     );
   });
 });
+
+let bulletsSpans = document.querySelectorAll(".bullets-settings span");
+
+if (localStorage.bulletOption) {
+  bulletsSpans.forEach((span) => {
+    span.dataset.display === localStorage.bulletOption
+      ? span.classList.add("active")
+      : span.classList.remove("active");
+  });
+  bulletsDiv.style.display = localStorage.bulletOption;
+}
+
+// Show Or Hide Bullets
+bulletsSpans.forEach((span) => {
+  span.addEventListener("click", () => {
+    bulletsSpans.forEach((span) => {
+      span.classList.remove("active");
+    });
+    span.classList.add("active");
+    localStorage.bulletOption = span.dataset.display;
+    bulletsDiv.style.display = localStorage.bulletOption;
+  });
+});
+
+// Reset Button
+document.querySelector(".reset-button").onclick = () => {
+  localStorage.clear();
+  location.reload();
+};
 
 changeBackground();
 
