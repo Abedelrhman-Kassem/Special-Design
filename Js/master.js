@@ -158,22 +158,22 @@ boxs.forEach((box) => {
 // Start Features
 
 let featBoxs = document.querySelectorAll(".features .feat-box");
-featBoxs.forEach((featBox) => {
-  window.addEventListener("scroll", () => {
-    let featBoxRect = featBox.getBoundingClientRect();
-    featBox.classList.toggle("show", featBoxRect.top < 600);
-  });
-});
+animationTop(featBoxs);
 
 // End Features
 // Start Testimonials
 
 let tsBoxs = document.querySelectorAll(".testimonials .ts-box");
-tsBoxs.forEach((tsBox) => {
-  window.addEventListener("scroll", () => {
-    let tsBoxRect = tsBox.getBoundingClientRect();
-    tsBox.classList.toggle("show", tsBoxRect.top < 600);
-  });
-});
+animationTop(tsBoxs);
 
 // End Testimonials
+
+// Animation Function
+function animationTop(boxs) {
+  boxs.forEach((box) => {
+    window.addEventListener("scroll", () => {
+      let boxRect = box.getBoundingClientRect();
+      box.classList.toggle("show", boxRect.top < 600);
+    });
+  });
+}
