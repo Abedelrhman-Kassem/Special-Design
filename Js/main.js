@@ -260,6 +260,16 @@ let tsBoxs = document.querySelectorAll(".testimonials .ts-box");
 animationTop(tsBoxs);
 
 // End Testimonials
+// Start Contact Us
+
+let inputDivs = document.querySelectorAll("form > div");
+animationTop(inputDivs);
+
+document
+  .querySelector("[type=submit]")
+  .addEventListener("click", (e) => e.preventDefault());
+
+// End Contact Us
 
 // Animation Function
 function animationTop(boxs) {
