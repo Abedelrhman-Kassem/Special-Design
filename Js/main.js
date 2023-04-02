@@ -92,6 +92,7 @@ function linkScroll(elements) {
       document
         .querySelector(ele.dataset.section)
         .scrollIntoView({ behavior: "smooth" });
+      document.querySelector(".links").classList.remove("open");
     });
   });
 }
@@ -270,6 +271,22 @@ document
   .addEventListener("click", (e) => e.preventDefault());
 
 // End Contact Us
+// open Menu Links
+let toggleMenu = document.querySelector(".toggle-menu");
+let linksDiv = document.querySelector(".links");
+
+toggleMenu.onclick = (e) => {
+  //
+  e.stopPropagation();
+  linksDiv.classList.toggle("open");
+};
+linksDiv.onclick = (e) => e.stopPropagation();
+
+document.addEventListener("click", (e) => {
+  if (e.target != toggleMenu && e.target != linksDiv) {
+    linksDiv.classList.remove("open");
+  }
+});
 
 // Animation Function
 function animationTop(boxs) {
