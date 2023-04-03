@@ -6,7 +6,7 @@
 }
 body {
   font-family: "Open Sans", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
 }
 section:not(.landing) {
   padding: 50px 0;
@@ -325,11 +325,17 @@ section:not(.about-us) h2 {
   font-size: 1em;
   line-height: 1.6;
 }
+@media (max-width: 575px) {
+  .landing .introduction-text h1 {
+    font-size: 1.4em;
+  }
+}
 /* End Landing */
 /* Start About Us */
 .about-us {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .about-us .info-box {
   flex: 1;
@@ -348,27 +354,37 @@ section:not(.about-us) h2 {
 .about-us .image-box img {
   max-width: 250px;
 }
+@media (max-width: 767px) {
+  .about-us {
+    text-align: center;
+  }
+  .about-us .info-box,
+  .about-us .image-box {
+    flex: none;
+    width: 100%;
+  }
+}
 /* End About Us */
 /* Start Skills */
 
 .skills .skills-container .skill {
   margin-bottom: 20px;
   background-color: #fff;
-  height: 80px;
+  height: auto;
   padding: 20px 20px 20px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .skills .skills-container .skill-name {
-  flex-basis: 12%;
+  width: 140px;
   text-align: center;
   font-weight: bold;
 }
 .skills .skills-container .skill-progress {
-  background-color: #f6f6f6;
-  height: 100%;
-  flex-basis: 90%;
+  background-color: #e4e1e1;
+  height: 40px;
+  width: calc(100% - 140px);
   position: relative;
   overflow: hidden;
   border-radius: 6px;
@@ -390,7 +406,20 @@ section:not(.about-us) h2 {
   -o-transition: 0.8s ease-in-out;
   -webkit-transition: 0.8s ease-in-out;
 }
-
+@media (max-width: 767px) {
+  .skills .skills-container .skill {
+    display: block;
+    padding: 20px;
+  }
+  .skills .skills-container .skill-name {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .skills .skills-container .skill-progress {
+    width: 100%;
+    height: 40px;
+  }
+}
 /* End Skills */
 /* Start Gallery */
 .gallery .imgs-box {
@@ -452,6 +481,25 @@ section:not(.about-us) h2 {
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+}
+@media (max-width: 991px) {
+  .popup-box {
+    width: 80%;
+  }
+}
+@media (max-width: 767px) {
+  .popup-box {
+    width: 90%;
+  }
+}
+@media (max-width: 575px) {
+  .popup-box .close-btn {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    right: -15px;
+    top: -15px;
+  }
 }
 /* End Gallery */
 /* Start Timeline */
@@ -554,6 +602,25 @@ section:not(.about-us) h2 {
 .timeline .box p {
   color: #666;
   line-height: 1.6;
+  font-size: 0.8em;
+}
+@media (max-width: 767px) {
+  .timeline .box {
+    width: 100%;
+    margin: 60px 0;
+    text-align: center;
+  }
+  .timeline .box::before {
+    border-color: transparent transparent #fff transparent;
+    right: calc(50% - 10px);
+    top: -20px;
+    left: auto;
+  }
+  .timeline .box::after {
+    top: -40px;
+    right: calc(50% - 10px);
+    left: auto;
+  }
 }
 /* End Timeline */
 /* Start Features */
@@ -683,6 +750,16 @@ section:not(.about-us) h2 {
   margin: 0;
   font-size: 0.8em;
 }
+@media (max-width: 767px) {
+  .testimonials .container h2 {
+    text-align: center;
+  }
+}
+@media (max-width: 575px) {
+  .testimonials .ts-box .info img {
+    margin-right: 20px;
+  }
+}
 /* End Testimonials */
 /* Start Contact Us */
 .contact-us {
@@ -770,6 +847,14 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   appearance: textfield;
 }
+@media (max-width: 767px) {
+  .contact-us form {
+    flex-wrap: wrap;
+  }
+  .contact-us form > div {
+    width: 100%;
+  }
+}
 /* End Contact Us */
 
 /* Start Media Queries */
@@ -826,6 +911,9 @@ input[type="number"] {
 }
 
 @media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
   .container {
     width: 540px;
   }
