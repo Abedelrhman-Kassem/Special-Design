@@ -648,8 +648,19 @@ section:not(.about-us) h2 {
   opacity: 1;
   top: 0;
 }
-.features .feat-box img {
-  max-width: 120px;
+.features .feat-box i {
+  font-size: 2.7em;
+  margin-bottom: 10px;
+  color: #fff;
+  background-color: var(--main-color);
+  width: 140px;
+  height: 90px;
+  line-height: 90px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 .features .feat-box h4 {
   position: relative;
@@ -856,6 +867,14 @@ input[type="number"] {
   }
 }
 /* End Contact Us */
+/* Start Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+/* End Footer */
 
 /* Start Media Queries */
 @media (max-width: 1400px) {
