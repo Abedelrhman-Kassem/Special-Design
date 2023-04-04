@@ -4,6 +4,7 @@ let list = document.querySelectorAll(".colors-list li");
 let backgroundSpans = document.querySelectorAll(".random-background span");
 let backgroundShuffle;
 let imgsArray = [];
+let distance = 0;
 
 // Open and Close Settings
 document.querySelector(".setting .icon").addEventListener("click", function () {
@@ -241,30 +242,29 @@ function removePopup() {
 // Start Timeline
 
 let boxs = document.querySelectorAll(".timeline .box");
-boxs.forEach((box) => {
-  window.addEventListener("scroll", () => {
-    let boxRect = box.getBoundingClientRect();
-    box.classList.toggle("show", boxRect.top < 400);
-  });
-});
+distance = 400;
+animationTop(boxs, distance);
 
 // End Timeline
 // Start Features
 
 let featBoxs = document.querySelectorAll(".features .feat-box");
-animationTop(featBoxs);
+distance = 600;
+animationTop(featBoxs, distance);
 
 // End Features
 // Start Testimonials
 
 let tsBoxs = document.querySelectorAll(".testimonials .ts-box");
-animationTop(tsBoxs);
+distance = 600;
+animationTop(tsBoxs, distance);
 
 // End Testimonials
 // Start Contact Us
 
 let inputDivs = document.querySelectorAll("form > div");
-animationTop(inputDivs);
+distance = 400;
+animationTop(inputDivs, distance);
 
 document
   .querySelector("[type=submit]")
@@ -289,11 +289,11 @@ document.addEventListener("click", (e) => {
 });
 
 // Animation Function
-function animationTop(boxs) {
+function animationTop(boxs, distance) {
   boxs.forEach((box) => {
     window.addEventListener("scroll", () => {
       let boxRect = box.getBoundingClientRect();
-      box.classList.toggle("show", boxRect.top < 600);
+      box.classList.toggle("show", boxRect.top < distance);
     });
   });
 }
