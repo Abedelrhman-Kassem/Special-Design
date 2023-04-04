@@ -10,6 +10,7 @@ let distance = 0;
 document.querySelector(".setting .icon").addEventListener("click", function () {
   let settings = document.querySelector(".setting");
   let gearIcon = document.querySelector(".gear");
+
   settings.classList.toggle("opened");
   gearIcon.classList.toggle("opened");
 
